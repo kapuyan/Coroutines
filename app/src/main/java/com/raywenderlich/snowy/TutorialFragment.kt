@@ -197,9 +197,7 @@ class TutorialFragment : Fragment() {
       SnowFilter.applySnowEffect(originalBitmap)
     }
 
-  /***
-   * clean up your coroutines, to avoid leaks.
-   */
+  //added onDestroy
   override fun onDestroy() {
     super.onDestroy()
     parentJob.cancel()
