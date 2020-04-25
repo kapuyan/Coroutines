@@ -208,4 +208,10 @@ class TutorialFragment : Fragment() {
       return@async BitmapFactory.decodeStream(it)
     }
   }
+
+  private fun loadSnowFilterAsync(originalBitmap: Bitmap): Deferred<Bitmap> =
+    coroutineScope.async(Dispatchers.Default){
+      SnowFilter.applySnowEffect(originalBitmap)
+    }
+
 }
