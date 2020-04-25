@@ -111,6 +111,11 @@ class TutorialFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     val tutorial = arguments?.getParcelable(TUTORIAL_KEY) as Tutorial
 
+
+
+
+
+
     /***
      * You launch a coroutine on the main
      * thread. But the originalBitmap is computed in a worker
@@ -196,22 +201,5 @@ class TutorialFragment : Fragment() {
     super.onDestroy()
     parentJob.cancel()
   }
-
-  //function that returns a deferred bitmap.
-  private fun getOriginalBitMapAsync(tutorial: Tutorial):
-          Deferred<Bitmap> =
-    //2 creates a coroutine in an input-output optimized Dispatcher.
-    //offloads work from main thread
-  coroutineScope.async(Dispatchers.IO){
-    //3 opens a stream from image URL to create bitmap
-    URL(tutorial.url).openStream().use{
-      return@async BitmapFactory.decodeStream(it)
-    }
-  }
-
-  private fun loadSnowFilterAsync(originalBitmap: Bitmap): Deferred<Bitmap> =
-    coroutineScope.async(Dispatchers.Default){
-      SnowFilter.applySnowEffect(originalBitmap)
-    }
 
 }
