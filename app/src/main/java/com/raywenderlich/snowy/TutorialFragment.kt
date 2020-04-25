@@ -124,8 +124,8 @@ class TutorialFragment : Fragment() {
      * is returned.
      */
     coroutineScope.launch(Dispatchers.Main) {
-//      val originalBitmap: Bitmap = getOriginalBitmapAsync(tutorial).await()
-      val originalBitmap = getOriginalBitmapAsync2(tutorial)
+    val originalBitmap: Bitmap = getOriginalBitmapAsync(tutorial).await()
+  //    val originalBitmap = getOriginalBitmapAsync2(tutorial)
 
       /***
        * You’re simply applying the filter to a loaded image,
