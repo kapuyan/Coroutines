@@ -177,6 +177,9 @@ class TutorialFragment : Fragment() {
    * This is usually CPU intensive work, so you can use the
    * Default dispatcher to use a worker thread.
    */
+
+
+
   private fun loadSnowFiltersAsync(originalBitmap: Bitmap): Deferred<Bitmap> =
     coroutineScope.async(Dispatchers.Default) {
       SnowFilter.applySnowEffect(originalBitmap)
