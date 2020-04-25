@@ -196,4 +196,16 @@ class TutorialFragment : Fragment() {
     super.onDestroy()
     parentJob.cancel()
   }
+
+  //function that returns a deferred bitmap.
+  private fun getOriginalBitMapAsync(tutorial: Tutorial):
+          Deferred<Bitmap> =
+    //2 creates a coroutine in an input-output optimized Dispatcher.
+    //offloads work from main thread
+  coroutineScope.async(Dispatchers.IO){
+    //3 opens a stream from image URL to create bitmap
+    URL(tutorial.url).openStream().use{
+      return@async BitmapFactory.decodeStream(it)
+    }
+  }
 }
